@@ -1,3 +1,4 @@
+alert("NEW APP.JS IS WORKING");
 const esc = (value) => String(value ?? "")
   .replaceAll('&', '&amp;')
   .replaceAll('<', '&lt;')
