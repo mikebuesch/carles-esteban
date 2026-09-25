@@ -74,9 +74,10 @@ h2 {
 /* THREE BOOKS NEXT TO EACH OTHER */
 
 /* Homepage book layout */
-
 #books {
   margin-top: 40px;
+}
+#books {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
