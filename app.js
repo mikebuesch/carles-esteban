@@ -1,128 +1,150 @@
-/*
-  MAIN WEBSITE LOGIC
-*/
-
-function esc(value) {
-  return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
-function getBook(id) {
-  return BOOKS.find(book => book.id === id);
-}
-
-function getText(book, id) {
-  return book?.texts?.find(text => text.id === id);
-}
+const esc = (value) => String(value ?? "")
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;')
+  .replaceAll("'", '&#039;');
 
 
-/* =========================
+const params = new URLSearchParams(window.location.search);
+
+const bookId = params.get('book');
+const textId = params.get('text');
+
+const book = BOOKS.find(item => item.id === bookId);
+
+
+/* =========================================
    HOMEPAGE
-   ========================= */
+   ========================================= */
 
 function renderHome() {
-  const container = document.querySelector("#books");
 
-  if (!container) return;
+  const target = document.querySelector('#books');
 
-  container.innerHTML = BOOKS.map(book => `
+  if (!target) return;
+
+  target.innerHTML = BOOKS.map(book => `
+    
     <a
       class="book-card"
       href="book.html?book=${encodeURIComponent(book.id)}"
-      aria-label="Ver ${esc(book.title)}"
+      aria-label="Abrir ${esc(book.title)}"
     >
-      <div class="book-cover">
-        <img
-          src="${esc(book.cover)}"
-          alt="${esc(book.title)}"
-        >
-      </div>
 
-      <div class="book-card-info">
-        <p>${esc(book.author)}</p>
-        <h2>${esc(book.title)}</h2>
-      </div>
+      <img
+        src="${esc(book.cover)}"
+        alt="Portada de ${esc(book.title)}"
+      >
+
     </a>
-  `).join("");
+
+  `).join('');
+
+
+  const year = document.querySelector('#year');
+
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
 }
 
 
-/* =========================
+/* =========================================
    BOOK PAGE
-   ========================= */
+   ========================================= */
 
-function renderBookPage() {
-  const container = document.querySelector("#book-page");
+function renderBook() {
 
-  if (!container) return;
+  const target = document.querySelector('#book-page');
 
-  const params = new URLSearchParams(window.location.search);
-  const bookId = params.get("book");
+  if (!target || !book) return;
 
-  const book = getBook(bookId);
-
-  if (!book) {
-    container.innerHTML = `
-      <main class="error-page">
-        <h1>Libro no encontrado</h1>
-        <a href="index.html">Volver a los libros</a>
-      </main>
-    `;
-    return;
-  }
 
   document.title = `${book.title} · Carles Esteban`;
 
-  document.documentElement.style.setProperty(
-    "--book-theme",
+
+  document.body.style.setProperty(
+    '--book-theme',
     book.theme
   );
 
-  container.innerHTML = `
-    <main class="book-page-content">
 
-      <a class="back-link" href="index.html">
+  target.innerHTML = `
+
+    <div class="book-shell">
+
+      <a
+        class="back-link"
+        href="index.html"
+      >
         ← Volver a los libros
       </a>
 
-      <div class="book-detail">
 
-        <div class="book-detail-cover">
+      <section class="book-layout">
+
+
+        <!-- BOOK COVER -->
+
+        <div class="cover-wrap">
+
           <img
+            class="detail-cover"
             src="${esc(book.cover)}"
-            alt="${esc(book.title)}"
+            alt="Portada de ${esc(book.title)}"
           >
+
         </div>
 
-        <div class="book-detail-info">
+
+        <!-- BOOK INFORMATION -->
+
+        <div class="book-options">
 
           <p class="eyebrow">
-            ${esc(book.author)}
+            ${esc(book.author || "Carles Esteban")}
           </p>
+
 
           <h1>
             ${esc(book.title)}
           </h1>
 
+
+          <p class="book-description">
+            Descubre los textos disponibles de este libro.
+          </p>
+
+
           <div class="reading-options">
 
-            <h2>Opciones de lectura</h2>
+            <h2>Leer</h2>
 
             ${book.texts.map(text => `
+
               <a
-                class="reading-option"
+                class="option"
                 href="read.html?book=${encodeURIComponent(book.id)}&text=${encodeURIComponent(text.id)}"
               >
-                ${esc(text.title)}
-                <span>→</span>
+
+                <span>
+                  ${esc(text.title)}
+                </span>
+
+                <span
+                  class="option-arrow"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+
               </a>
-            `).join("")}
+
+            `).join('')}
 
           </div>
+
 
           <a
             class="amazon-button"
@@ -130,58 +152,68 @@ function renderBookPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Comprar en Amazon ↗
+
+            <span>
+              Comprar el libro
+            </span>
+
+            <span aria-hidden="true">
+              ↗
+            </span>
+
           </a>
+
 
         </div>
 
-      </div>
+      </section>
 
-    </main>
+    </div>
+
   `;
 }
 
 
-/* =========================
+/* =========================================
    READING PAGE
-   ========================= */
+   ========================================= */
 
-function renderReadingPage() {
-  const container = document.querySelector("#reading-page");
+function renderReading() {
 
-  if (!container) return;
+  const target = document.querySelector('#reading-page');
 
-  const params = new URLSearchParams(window.location.search);
+  if (!target || !book) return;
 
-  const bookId = params.get("book");
-  const textId = params.get("text");
 
-  const book = getBook(bookId);
-  const text = getText(book, textId);
+  const text =
+    book.texts.find(item => item.id === textId)
+    || book.texts[0];
 
-  if (!book || !text) {
-    container.innerHTML = `
-      <main class="error-page">
-        <h1>Texto no encontrado</h1>
-        <a href="index.html">Volver a los libros</a>
-      </main>
-    `;
-    return;
-  }
 
-  document.title = `${text.title} · ${book.title}`;
+  if (!text) return;
 
-  container.innerHTML = `
-    <main class="reading-content">
 
-      <a
-        class="back-link"
-        href="book.html?book=${encodeURIComponent(book.id)}"
-      >
-        ← Volver al libro
-      </a>
+  document.title =
+    `${text.title} · ${book.title}`;
 
-      <article class="reading-article">
+
+  target.innerHTML = `
+
+    <article class="reading-shell">
+
+
+      <nav class="reading-nav">
+
+        <a
+          href="book.html?book=${encodeURIComponent(book.id)}"
+        >
+          ← ${esc(book.title)}
+        </a>
+
+      </nav>
+
+
+      <header class="reading-header">
 
         <p class="eyebrow">
           ${esc(book.title)}
@@ -191,39 +223,74 @@ function renderReadingPage() {
           ${esc(text.title)}
         </h1>
 
+      </header>
+
+
+      <div class="reading-content">
+
         ${
           text.content
-            ? `
-              <div class="reading-text">
-                ${esc(text.content).replace(/\n/g, "<br>")}
-              </div>
-            `
+            ? esc(text.content).replace(/\n/g, '<br>')
             : `
-              <div class="empty-reading">
-                <p>
-                  El contenido de este texto se añadirá próximamente.
-                </p>
-              </div>
+              <p class="empty-text">
+                Este texto estará disponible próximamente.
+              </p>
             `
         }
 
-      </article>
+      </div>
 
-    </main>
+
+    </article>
+
   `;
 }
 
 
-/* =========================
+/* =========================================
    START
-   ========================= */
+   ========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+renderHome();
 
-  renderHome();
+renderBook();
 
-  renderBookPage();
+renderReading();
 
-  renderReadingPage();
 
-});
+/* =========================================
+   ERROR
+   ========================================= */
+
+if (
+  (
+    document.querySelector('#book-page')
+    ||
+    document.querySelector('#reading-page')
+  )
+  &&
+  !book
+) {
+
+  const target =
+    document.querySelector('#book-page')
+    ||
+    document.querySelector('#reading-page');
+
+
+  target.innerHTML = `
+
+    <div class="not-found">
+
+      <h1>
+        Libro no encontrado
+      </h1>
+
+      <a href="index.html">
+        Volver a los libros
+      </a>
+
+    </div>
+
+  `;
+}
