@@ -74,16 +74,14 @@ h2 {
 /* THREE BOOKS NEXT TO EACH OTHER */
 
 .book-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex !important;
+  flex-direction: row !important;
   gap: 32px;
-  align-items: start;
+  align-items: flex-start;
 }
-@media (max-width: 700px) {
-  .book-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
+
+.book-grid .book-card {
+  flex: 1;
 }
 
 .book-card {
