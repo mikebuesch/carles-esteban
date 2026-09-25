@@ -73,11 +73,20 @@ h2 {
 
 /* THREE BOOKS NEXT TO EACH OTHER */
 
-.book-grid {
-  display: flex !important;
-  flex-direction: row !important;
+/* Homepage book layout */
+
+#books {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 32px;
-  align-items: flex-start;
+  align-items: start;
+}
+
+@media (max-width: 700px) {
+  #books {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
 }
 
 .book-grid .book-card {
