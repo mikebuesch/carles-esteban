@@ -1,19 +1,10 @@
-/* =========================================
-   CARLES ESTEBAN
-   BOOK WEBSITE
-   ========================================= */
-
-
-/* =========================================
-   GENERAL
-   ========================================= */
-
 :root {
+  --ink: #171717;
+  --muted: #666;
+  --line: rgba(0,0,0,.12);
   --book-theme: #eeeeee;
-  --text: #222222;
-  --muted: #666666;
-  --white: #ffffff;
-  --border: rgba(0, 0, 0, 0.12);
+  --serif: "Bodoni Moda", Didot, "Bodoni 72", Georgia, serif;
+  --sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 * {
@@ -21,20 +12,14 @@
 }
 
 html {
-  margin: 0;
-  padding: 0;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  padding: 0;
-
-  color: var(--text);
-  background: #f7f7f7;
-
-  font-family: Georgia, "Times New Roman", serif;
-
-  -webkit-font-smoothing: antialiased;
+  color: var(--ink);
+  background: #faf9f7;
+  font-family: var(--sans);
 }
 
 a {
@@ -47,312 +32,251 @@ a {
    HOMEPAGE
    ========================================= */
 
-body {
-  min-height: 100vh;
-}
-
-.home-page {
-  background: #f7f7f7;
-}
-
-.home-container {
-  width: min(1100px, 92%);
+.home-shell {
+  width: min(1180px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 70px 0;
+  padding: 72px 0 36px;
+}
+
+.site-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 56px;
 }
 
 .eyebrow {
-  margin: 0 0 10px;
-
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  margin: 0 0 12px;
+  font-size: .72rem;
+  letter-spacing: .22em;
   text-transform: uppercase;
-
   color: var(--muted);
 }
 
-.home-container h1 {
-  margin: 0 0 55px;
-
-  font-size: clamp(42px, 6vw, 72px);
+h1,
+h2 {
+  font-family: var(--serif);
   font-weight: 400;
 }
 
+.site-header h1 {
+  margin: 0;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: .95;
+}
 
-/* =========================================
-   BOOK GRID
-   ========================================= */
+.intro {
+  margin: 24px auto 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
 
-#books {
+
+/* THREE BOOKS NEXT TO EACH OTHER */
+
+.book-grid {
   display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 45px;
-
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
   align-items: start;
 }
 
 .book-card {
   display: block;
-
-  transition:
-    transform 0.25s ease,
-    opacity 0.25s ease;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 18px 45px rgba(0,0,0,.08);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .book-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 55px rgba(0,0,0,.13);
 }
 
-.book-cover {
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-
-  overflow: hidden;
-
-  background: #eeeeee;
-
-  aspect-ratio: 2 / 3;
-
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.12);
-}
-
-.book-cover img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
+.book-card img {
   display: block;
-}
-
-.book-card-info {
-  padding-top: 18px;
-}
-
-.book-card-info p {
-  margin: 0 0 5px;
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-
-  color: var(--muted);
-}
-
-.book-card-info h2 {
-  margin: 0;
-
-  font-size: 24px;
-  font-weight: 400;
-}
-
-
-/* =========================================
-   BOOK DETAIL PAGE
-   ========================================= */
-
-.book-page {
-  min-height: 100vh;
-
-  background: var(--book-theme);
-}
-
-.book-page-content {
-  width: min(900px, 92%);
-
-  margin: 0 auto;
-
-  padding:
-    35px
-    0
-    70px;
-}
-
-
-/* Back button */
-
-.back-link {
-  display: inline-block;
-
-  margin-bottom: 35px;
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 13px;
-
-  color: rgba(0, 0, 0, 0.65);
-
-  transition: opacity 0.2s ease;
-}
-
-.back-link:hover {
-  opacity: 0.55;
-}
-
-
-/* Main book layout */
-
-.book-detail {
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  text-align: center;
-}
-
-
-/* =========================================
-   COVER
-   ========================================= */
-
-.book-detail-cover {
-  width: min(300px, 65vw);
-
-  margin-bottom: 28px;
-
-  box-shadow:
-    0 18px 40px rgba(0, 0, 0, 0.18);
-}
-
-.book-detail-cover img {
-  display: block;
-
   width: 100%;
   height: auto;
 }
 
-
-/* =========================================
-   TITLE
-   ========================================= */
-
-.book-detail-info {
-  width: min(520px, 100%);
-}
-
-.book-detail-info .eyebrow {
-  margin-bottom: 8px;
-
-  color: rgba(0, 0, 0, 0.55);
-}
-
-.book-detail-info h1 {
-  margin: 0 0 32px;
-
-  font-size: clamp(32px, 5vw, 48px);
-
-  font-weight: 400;
-
-  line-height: 1.1;
+.site-footer {
+  margin-top: 72px;
+  text-align: center;
+  color: #888;
+  font-size: .8rem;
 }
 
 
 /* =========================================
-   READING OPTIONS
+   BOOK SUBPAGE
    ========================================= */
+
+.book-page {
+  min-height: 100vh;
+  background: var(--book-theme);
+  transition: background .3s;
+}
+
+.book-shell {
+  width: min(1050px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 30px 0 60px;
+}
+
+.back-link,
+.reading-nav a {
+  font-size: .85rem;
+  opacity: .72;
+}
+
+.back-link:hover,
+.reading-nav a:hover {
+  opacity: 1;
+}
+
+
+/*
+   BOOK LAYOUT
+
+   The original had a huge cover.
+   We reduce it to a much more reasonable size.
+*/
+
+.book-layout {
+  min-height: calc(100vh - 100px);
+
+  display: grid;
+
+  grid-template-columns: 300px minmax(300px, 500px);
+
+  justify-content: center;
+
+  gap: 70px;
+
+  align-items: center;
+
+  padding: 35px 0;
+}
+
+
+/* COVER */
+
+.cover-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-cover {
+  width: 280px;
+
+  max-width: 100%;
+
+  height: auto;
+
+  box-shadow: 0 20px 45px rgba(0,0,0,.18);
+}
+
+
+/* BOOK INFORMATION */
+
+.book-options {
+  width: 100%;
+}
+
+.book-options h1 {
+  margin: 0 0 10px;
+
+  font-size: clamp(2.5rem, 5vw, 4rem);
+
+  line-height: 1;
+}
+
+
+/* AUTHOR */
+
+.book-options .eyebrow {
+  margin-bottom: 12px;
+}
+
+
+/* READING OPTIONS */
 
 .reading-options {
-  width: 100%;
+  display: grid;
 
-  margin-top: 10px;
+  gap: 10px;
+
+  margin-top: 30px;
+
+  margin-bottom: 18px;
 }
 
-.reading-options h2 {
-  margin: 0 0 14px;
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 12px;
-
-  font-weight: 600;
-
-  letter-spacing: 0.12em;
-
-  text-transform: uppercase;
-
-  color: rgba(0, 0, 0, 0.55);
-}
-
-
-/* Individual reading button */
-
-.reading-option {
+.option {
   display: flex;
 
   justify-content: space-between;
-  align-items: center;
 
-  width: 100%;
+  align-items: center;
 
   padding: 16px 20px;
 
-  margin-bottom: 8px;
+  border: 1px solid rgba(0,0,0,.17);
 
-  background: rgba(255, 255, 255, 0.55);
-
-  border: 1px solid rgba(0, 0, 0, 0.1);
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  font-size: 14px;
+  background: rgba(255,255,255,.38);
 
   transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+    background .2s,
+    transform .2s;
 }
 
-.reading-option:hover {
-  background: rgba(255, 255, 255, 0.85);
+.option:hover {
+  background: rgba(255,255,255,.78);
 
   transform: translateX(4px);
 }
 
-.reading-option span {
-  font-size: 18px;
+.option span:first-child {
+  font-family: var(--serif);
+
+  font-size: 1.25rem;
 }
 
 
-/* =========================================
-   AMAZON BUTTON
-   ========================================= */
+/* AMAZON */
 
 .amazon-button {
-  display: inline-block;
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
 
   margin-top: 25px;
 
-  padding: 15px 26px;
+  padding: 17px 20px;
 
-  background: #222222;
+  background: var(--ink);
 
   color: white;
 
-  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
 
-  font-size: 13px;
-
-  letter-spacing: 0.03em;
-
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
+  transition: opacity .2s, transform .2s;
 }
 
 .amazon-button:hover {
-  transform: translateY(-2px);
+  opacity: .86;
 
-  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.book-meta {
+  margin-top: 22px;
+
+  color: rgba(0,0,0,.62);
+
+  font-size: .8rem;
 }
 
 
@@ -360,147 +284,168 @@ body {
    READING PAGE
    ========================================= */
 
+.reading-body {
+  background: white;
+}
+
+.reading-page {
+  min-height: 100vh;
+
+  background: white;
+}
+
+.reading-shell {
+  width: min(820px, calc(100% - 42px));
+
+  margin: 0 auto;
+
+  padding: 28px 0 90px;
+}
+
+.reading-header {
+  padding: 80px 0 50px;
+
+  text-align: center;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.reading-header h1 {
+  margin: 0;
+
+  font-size: clamp(2.7rem, 6vw, 4.8rem);
+}
+
 .reading-content {
-  width: min(760px, 90%);
+  padding: 55px 0;
 
-  margin: 0 auto;
+  font-family: var(--serif);
 
-  padding: 35px 0 80px;
-}
+  font-size: 1.2rem;
 
-.reading-article {
-  margin-top: 50px;
+  line-height: 1.95;
 
-  padding: 0;
-}
+  color: #222;
 
-.reading-article h1 {
-  margin: 0 0 45px;
-
-  font-size: clamp(34px, 5vw, 52px);
-
-  font-weight: 400;
-
-  line-height: 1.15;
-}
-
-.reading-text {
-  font-size: 19px;
-
-  line-height: 1.85;
-
-  color: #222222;
-}
-
-.empty-reading {
-  padding: 50px 30px;
-
-  background: #fafafa;
-
-  border: 1px solid #eeeeee;
-
-  text-align: center;
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  color: #777777;
+  white-space: normal;
 }
 
 
 /* =========================================
-   ERROR PAGE
+   NOT FOUND
    ========================================= */
 
-.error-page {
-  width: min(700px, 90%);
+.not-found {
+  min-height: 100vh;
 
-  margin: 0 auto;
+  display: grid;
 
-  padding: 100px 0;
+  place-content: center;
 
   text-align: center;
 }
 
-.error-page h1 {
-  font-size: 42px;
-
-  font-weight: 400;
-
-  margin-bottom: 30px;
+.not-found a {
+  text-decoration: underline;
 }
 
 
 /* =========================================
-   MOBILE
+   TABLET
    ========================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 
-  .home-container {
-    padding: 45px 0;
+  .home-shell {
+    width: min(100% - 28px, 600px);
+
+    padding-top: 48px;
   }
 
-  .home-container h1 {
-    margin-bottom: 35px;
-  }
 
-  #books {
-    grid-template-columns: 1fr 1fr;
+  /*
+     IMPORTANT:
+     Keep the homepage behaviour from the original.
+     On phones the books stack because three columns
+     would be too small.
+  */
 
-    gap: 30px 18px;
-  }
-
-  .book-card-info h2 {
-    font-size: 19px;
-  }
-
-  .book-detail-cover {
-    width: min(230px, 62vw);
-
-    margin-bottom: 24px;
-  }
-
-  .book-page-content {
-    padding-top: 25px;
-  }
-
-  .book-detail-info h1 {
-    margin-bottom: 25px;
-  }
-
-  .reading-text {
-    font-size: 17px;
-
-    line-height: 1.75;
-  }
-
-}
-
-
-/* =========================================
-   SMALL PHONES
-   ========================================= */
-
-@media (max-width: 430px) {
-
-  #books {
+  .book-grid {
     grid-template-columns: 1fr;
+
+    gap: 24px;
   }
 
-  .book-cover {
-    max-width: 280px;
 
-    margin: 0 auto;
+  /*
+     Book page becomes vertical.
+  */
+
+  .book-layout {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+
+    padding-top: 42px;
+
+    text-align: center;
   }
 
-  .book-card-info {
-    max-width: 280px;
-
-    margin: 0 auto;
+  .detail-cover {
+    width: 230px;
   }
 
-  .book-detail-cover {
+  .book-options {
+    padding: 0 4px;
+  }
+
+  .reading-options {
+    text-align: left;
+  }
+
+  .amazon-button {
+    text-align: left;
+  }
+}
+
+
+/* =========================================
+   PHONE
+   ========================================= */
+
+@media (max-width: 480px) {
+
+  .home-shell {
+    width: calc(100% - 24px);
+  }
+
+  .site-header {
+    margin-bottom: 36px;
+  }
+
+  .book-shell {
+    width: calc(100% - 28px);
+  }
+
+  .book-layout {
+    gap: 30px;
+  }
+
+  .detail-cover {
     width: 210px;
   }
 
+  .book-options h1 {
+    font-size: 2.5rem;
+  }
+
+  .reading-shell {
+    width: calc(100% - 30px);
+  }
+
+  .reading-content {
+    font-size: 1.08rem;
+
+    line-height: 1.85;
+  }
 }
