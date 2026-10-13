@@ -29,7 +29,7 @@ const target = document.querySelector('#book-page');
 if (!target || !book) return;
 
 document.title = "${book.title} · Carles Esteban";
-document.body.style.setProperty('--book-theme', book.theme);
+document.body.style.setProperty('--book-theme', book.theme || '#f4efe8');
 
 target.innerHTML = `
 <div class="book-shell">
@@ -60,7 +60,7 @@ target.innerHTML = `
       <div class="reading-options">
         <h2>Leer</h2>
 
-        ${book.texts.map(text => `
+        ${(book.texts || []).map(text => `
           <a
             class="option"
             href="${text.pdf
@@ -96,8 +96,8 @@ function renderReading() {
 const target = document.querySelector('#reading-page');
 if (!target || !book) return;
 
-const text = book.texts.find(item => item.id === textId)
-|| book.texts[0];
+const text = (book.texts || []).find(item => item.id === textId)
+|| (book.texts || [])[0];
 
 if (!text) return;
 
