@@ -125,7 +125,7 @@ function renderBook() {
 
               <a
                 class="option"
-                href="read.html?book=${encodeURIComponent(book.id)}&text=${encodeURIComponent(text.id)}"
+                href="${text.pdf ? esc(text.pdf) : `read.html?book=${encodeURIComponent(book.id)}&text=${encodeURIComponent(text.id)}`}"
               >
 
                 <span>
@@ -205,7 +205,7 @@ function renderReading() {
       <nav class="reading-nav">
 
         <a
-          href="book.html?book=${encodeURIComponent(book.id)}"
+          href="${text.pdf ? esc(text.pdf) : `read.html?book=${encodeURIComponent(book.id)}&text=${encodeURIComponent(text.id)}`}"
         >
           ← ${esc(book.title)}
         </a>
