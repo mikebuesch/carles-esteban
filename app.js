@@ -59,11 +59,14 @@ function renderBook() {
         </div>
 
         <div class="book-options">
-          <p class="eyebrow">${esc(book.author || "Carles Esteban")}</p>
+          <p class="eyebrow">
+            ${esc(book.author || "Carles Esteban")}
+          </p>
+
           <h1>${esc(book.title)}</h1>
 
           <p class="book-description">
-            Descubre los textos disponibles de este libro.
+            ${esc(book.description || "Descubre los textos disponibles de este libro.")}
           </p>
 
           <div class="reading-options">
@@ -109,7 +112,6 @@ function renderReading() {
 
   if (!text) return;
 
-  // If a PDF is configured, send the reader directly to it.
   if (text.pdf) {
     window.location.replace(text.pdf);
     return;
