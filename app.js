@@ -16,7 +16,12 @@ function renderHome() {
 const target = document.querySelector('#books');
 if (!target) return;
 
-target.innerHTML = BOOKS.map(book => "<a class="book-card" href="book.html?book=${encodeURIComponent(book.id)}" aria-label="Abrir ${esc(book.title)}" > <img src="${esc(book.cover)}" alt="Portada de ${esc(book.title)}" > <span class="book-title">${esc(book.title)}</span> </a>").join('');
+target.innerHTML = BOOKS.map(book => `
+  <a class="book-card" href="book.html?book=${encodeURIComponent(book.id)}">
+    <img src="${esc(book.cover)}" alt="Portada de ${esc(book.title)}">
+    <span class="book-title">${esc(book.title)}</span>
+  </a>
+`).join('');
 
 const year = document.querySelector('#year');
 if (year) {
@@ -156,5 +161,10 @@ if (
 const target = document.querySelector('#book-page')
 || document.querySelector('#reading-page');
 
-target.innerHTML = "<div class="not-found"> <h1>Libro no encontrado</h1> <a href="index.html">Volver a los libros</a> </div>";
+target.innerHTML = `
+  <div class="not-found">
+    <h1>Libro no encontrado</h1>
+    <a href="index.html">Volver a los libros</a>
+  </div>
+`;
 }
