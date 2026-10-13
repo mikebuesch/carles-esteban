@@ -1,8 +1,9 @@
 const esc = (value) => String(value ?? "")
-  .replaceAll('&', '&amp;')
-  .replaceAll('<', '&lt;')
-  .replaceAll('>', '&gt;')
-  .replaceAll('"', '&quot;')
+.replaceAll('&', '&')
+.replaceAll('<', '<')
+.replaceAll('>', '>')
+.replaceAll('"', '"')
+.replaceAll("'", ''');
 
 const params = new URLSearchParams(window.location.search);
 const bookId = params.get('book');
@@ -18,7 +19,9 @@ if (!target) return;
 target.innerHTML = BOOKS.map(book => "<a class="book-card" href="book.html?book=${encodeURIComponent(book.id)}" aria-label="Abrir ${esc(book.title)}" > <img src="${esc(book.cover)}" alt="Portada de ${esc(book.title)}" > <span class="book-title">${esc(book.title)}</span> </a>").join('');
 
 const year = document.querySelector('#year');
-if (year) year.textContent = new Date().getFullYear();
+if (year) {
+year.textContent = new Date().getFullYear();
+}
 }
 
 /* BOOK PAGE */
@@ -28,7 +31,10 @@ const target = document.querySelector('#book-page');
 if (!target || !book) return;
 
 document.title = "${book.title} · Carles Esteban";
-document.body.style.setProperty('--book-theme', book.theme || '#f4efe8');
+document.body.style.setProperty(
+'--book-theme',
+book.theme || '#f4efe8'
+);
 
 target.innerHTML = `
 <div class="book-shell">
@@ -47,13 +53,13 @@ target.innerHTML = `
 
     <div class="book-options">
       <p class="eyebrow">
-        ${esc(book.author || "Carles Esteban")}
+        ${esc(book.author || 'Carles Esteban')}
       </p>
 
       <h1>${esc(book.title)}</h1>
 
       <p class="book-description">
-        ${esc(book.description || "Descubre los textos disponibles de este libro.")}
+        ${esc(book.description || 'Descubre los textos disponibles de este libro.')}
       </p>
 
       <div class="reading-options">
@@ -95,8 +101,9 @@ function renderReading() {
 const target = document.querySelector('#reading-page');
 if (!target || !book) return;
 
-const text = (book.texts || []).find(item => item.id === textId)
-|| (book.texts || [])[0];
+const text = (book.texts || []).find(
+item => item.id === textId
+) || (book.texts || [])[0];
 
 if (!text) return;
 
