@@ -15,22 +15,13 @@ const BOOKS = [
     theme: "#efe4e4",
     amazon: "https://www.amazon.es/Desconocidos-Carlos-Esteban/dp/B0H9HTM8BR/ref=mp_s_a_1_1?crid=3M5COF67LVJXR&dib=eyJ2IjoiMSJ9.fKmUagLvFzdD8M4pWX3XrFOh6DqyI4CVoh7v1vJaUB14ZoQ_2QuH25baMnIGLWThQ7dM8fvg2qw3dnRcA_kgbYx_IYHsVnOTEJaE_kIirH933itipwVnHr_Uz9U2D5ofUWRXNhsmE4vSaLryKuZk5N247QjnfBTyUhHHxLiYltzk-QONysu_gbaObSMHD5RYyw162k4vY84yc46e6leUww.sjVL8MSooXM6XNUHBslQ0WVz0xLhpEtF_o-JFivz2sc&dib_tag=se&keywords=carlos+esteban&qid=1790324829&sprefix=carlos+esteban%2Caps%2C79&sr=8-1",
     texts: [
-      {
-        id: "text-1",
-        title: "Texto 1",
-        content: ""
-      },
-      {
-        id: "text-2",
-        title: "Texto 2",
-        content: ""
-      },
-      {
-        id: "text-3",
-        title: "Texto 3",
-        content: ""
-      }
-    ]
+  {
+    id: "text-1",
+    title: "Leer un capítulo",
+    content: "",
+    pdf: "pdfs/Texto%202%20%28leer%20un%20cap%C3%ADtulo%29%20DESCONOCIDOS.pdf"
+  }
+]
   },
 
   {
@@ -41,23 +32,13 @@ const BOOKS = [
     theme: "#dceef4",
     amazon: "https://www.amazon.es/mujer-sus-sue%C3%B1os-Carles-Esteban/dp/B0BQY8V94C/ref=mp_s_a_1_2?crid=3M5COF67LVJXR&dib=eyJ2IjoiMSJ9.fKmUagLvFzdD8M4pWX3XrFOh6DqyI4CVoh7v1vJaUB14ZoQ_2QuH25baMnIGLWThQ7dM8fvg2qw3dnRcA_kgbYx_IYHsVnOTEJaE_kIirH933itipwVnHr_Uz9U2D5ofUWRXNhsmE4vSaLryKuZk5N247QjnfBTyUhHHxLiYltzk-QONysu_gbaObSMHD5RYyw162k4vY84yc46e6leUww.sjVL8MSooXM6XNUHBslQ0WVz0xLhpEtF_o-JFivz2sc&dib_tag=se&keywords=carlos+esteban&qid=1790324829&sprefix=carlos+esteban%2Caps%2C79&sr=8-2",
     texts: [
-      {
-        id: "text-1",
-        title: "Texto 1",
-        content: ""
-      },
-      {
-        id: "text-2",
-        title: "Texto 2",
-        content: ""
-      },
-      {
-        id: "text-3",
-        title: "Texto 3",
-        content: ""
-      }
-    ]
-  },
+  {
+    id: "text-1",
+    title: "Leer un capítulo",
+    content: "",
+    pdf: "pdfs/Texto%202%20%28leer%20un%20cap%C3%ADtulo%29%20LA%20MUJER%20DE%20SUS%20SUE%C3%91OS.pdf"
+  }
+]
 
   {
     id: "book-3",
@@ -66,22 +47,12 @@ const BOOKS = [
     cover: "assets/covers/book-3.png",
     theme: "#eeeeee",
     amazon: "https://www.amazon.es/El-esp%C3%ADritu-las-ilusiones-ocultas/dp/B0CSX4D2V3/ref=mp_s_a_1_3?crid=3M5COF67LVJXR&dib=eyJ2IjoiMSJ9.fKmUagLvFzdD8M4pWX3XrFOh6DqyI4CVoh7v1vJaUB14ZoQ_2QuH25baMnIGLWThQ7dM8fvg2qw3dnRcA_kgbYx_IYHsVnOTEJaE_kIirH933itipwVnHr_Uz9U2D5ofUWRXNhsmE4vSaLryKuZk5N247QjnfBTyUhHHxLiYltzk-QONysu_gbaObSMHD5RYyw162k4vY84yc46e6leUww.sjVL8MSooXM6XNUHBslQ0WVz0xLhpEtF_o-JFivz2sc&dib_tag=se&keywords=carlos+esteban&qid=1790324829&sprefix=carlos+esteban%2Caps%2C79&sr=8-3",
-    texts: [
-      {
-        id: "text-1",
-        title: "Texto 1",
-        content: ""
-      },
-      {
-        id: "text-2",
-        title: "Texto 2",
-        content: ""
-      },
-      {
-        id: "text-3",
-        title: "Texto 3",
-        content: ""
-      }
-    ]
+   texts: [
+  {
+    id: "text-1",
+    title: "Leer un capítulo",
+    content: "",
+    pdf: "pdfs/Texto%202%20%28leer%20un%20cap%C3%ADtulo%29%20EL%20ESP%C3%8DRITU%20DE%20LAS%20ILUSIONES%20OCULTAS.pdf"
   }
+]
 ];
