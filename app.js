@@ -28,7 +28,8 @@ function renderHome() {
     
     <a
       class="book-card"
-      href="book.html?book=${encodeURIComponent(book.id)}"
+     href="${text.pdf ? esc(text.pdf) : `read.html?book=${encodeURIComponent(book.id)}&text=${encodeURIComponent(text.id)}`}"
+     target="${text.pdf ? '_blank' : '_self'}"
       aria-label="Abrir ${esc(book.title)}"
     >
 
@@ -126,6 +127,7 @@ function renderBook() {
               <a
                 class="option"
                 href="${text.pdf ? esc(text.pdf) : `read.html?book=${encodeURIComponent(book.id)}&text=${encodeURIComponent(text.id)}`}"
+                target="${text.pdf ? '_blank' : '_self'}"
               >
 
                 <span>
@@ -206,6 +208,7 @@ function renderReading() {
 
         <a
           href="${text.pdf ? esc(text.pdf) : `read.html?book=${encodeURIComponent(book.id)}&text=${encodeURIComponent(text.id)}`}"
+          target="${text.pdf ? '_blank' : '_self'}"
         >
           ← ${esc(book.title)}
         </a>
