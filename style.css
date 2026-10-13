@@ -156,9 +156,9 @@ opacity: 1;
 .book-layout {
 min-height: calc(100vh - 100px);
 display: grid;
-grid-template-columns: 300px minmax(300px, 500px);
+grid-template-columns: 380px minmax(300px, 460px);
 justify-content: center;
-gap: 70px;
+gap: 80px;
 align-items: center;
 padding: 35px 0;
 }
@@ -195,9 +195,10 @@ margin-bottom: 12px;
 }
 
 .book-description {
-margin: 20px 0;
+margin: 18px 0;
 color: rgba(0,0,0,.72);
-line-height: 1.75;
+font-size: 0.92rem;
+line-height: 1.7;
 }
 
 /* READING OPTIONS */
