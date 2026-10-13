@@ -1,9 +1,9 @@
 const esc = (value) => String(value ?? "")
-.replaceAll('&', '&')
-.replaceAll('<', '<')
-.replaceAll('>', '>')
-.replaceAll('"', '"')
-.replaceAll("'", ''');
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;')
+  .replaceAll("'", '&#039;');
 
 const params = new URLSearchParams(window.location.search);
 const bookId = params.get('book');
