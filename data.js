@@ -1,4 +1,3 @@
-```js
 const BOOKS = [
   {
     id: "book-1",
