@@ -16,7 +16,12 @@ function renderHome() {
   const target = document.querySelector('#books');
   if (!target) return;
 
-  target.innerHTML = BOOKS.map(book => "<a class="book-card" href="book.html?book=${encodeURIComponent(book.id)}"> <img src="${esc(book.cover)}" alt="Portada de ${esc(book.title)}"> </a>").join('');
+  
+  target.innerHTML = BOOKS.map(book => `
+    <a class="book-card" href="book.html?book=${encodeURIComponent(book.id)}">
+      <img src="${esc(book.cover)}" alt="Portada de ${esc(book.title)}">
+    </a>
+  `).join('');
 
   const year = document.querySelector('#year');
   if (year) {
