@@ -29,8 +29,12 @@ const target = document.querySelector('#books');
 if (!target) return;
 
 target.innerHTML = BOOKS.map(book => `
-  <a class="book-card" href="book.html?book=${encodeURIComponent(book.id)}">
-    <img src="${esc(book.cover)}" alt="Portada de ${esc(book.title)}">
+<a class="book-card" href="${({
+  'book-1': '/libros/desconocidos/',
+  'book-2': '/libros/la-mujer-de-sus-suenos/',
+  'book-3': '/libros/el-espiritu-de-las-ilusiones-ocultas/'
+})[book.id]}">
+<img src="${esc(book.cover)}" alt="Portada de ${esc(book.title)}">
     <span class="book-title">${esc(book.title)}</span>
   </a>
 `).join('');
