@@ -10,7 +10,7 @@ const BOOKS = [
     texts: [
       {
         id: "text-1",
-        title: "Leer páginas al azar",
+        title: "Leer al azar",
         content: "",
         pdf: "/pdfs/Texto%201%20%28leer%20al%20azar%20para%20DESCONOCIDOS%29.pdf"
       },
@@ -33,7 +33,7 @@ const BOOKS = [
     texts: [
       {
         id: "text-1",
-        title: "Leer páginas al azar",
+        title: "Leer al azar",
         content: "",
         pdf: "/pdfs/Texto%201%20%28leer%20al%20azar%29%2C%20para%20LA%20MUJER%20DE%20SUS%20SUE%C3%91OS.pdf"
       },
@@ -56,7 +56,7 @@ const BOOKS = [
     texts: [
       {
         id: "text-1",
-        title: "Leer páginas al azar",
+        title: "Leer al azar",
         content: "",
         pdf: "/pdfs/Texto%201%20%28leer%20al%20azar%29%20para%20EL%20ESP%C3%8DRITU%20DE%20LAS....pdf"
       },
