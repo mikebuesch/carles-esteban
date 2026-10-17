@@ -5,160 +5,143 @@ const esc = (value) => String(value ?? "")
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#039;');
 
-
 const params = new URLSearchParams(window.location.search);
+const bookId = params.get('book');
 const textId = params.get('text');
-
-const path = window.location.pathname.toLowerCase();
-
-const bookIdFromPath = path.includes('/desconocidos/')
-  ? 'book-1'
-  : path.includes('/la-mujer-de-sus-suenos/')
-    ? 'book-2'
-    : path.includes('/el-espiritu-de-las-ilusiones-ocultas/')
-      ? 'book-3'
-      : null;
-
-const bookId = params.get('book') || bookIdFromPath;
 const book = BOOKS.find(item => item.id === bookId);
 
 /* HOMEPAGE */
 
 function renderHome() {
-const target = document.querySelector('#books');
-if (!target) return;
+  const target = document.querySelector('#books');
+  if (!target) return;
 
-target.innerHTML = BOOKS.map(book => `
-<a class="book-card" href="${({
-  'book-1': '/libros/desconocidos/',
-  'book-2': '/libros/la-mujer-de-sus-suenos/',
-  'book-3': '/libros/el-espiritu-de-las-ilusiones-ocultas/'
-})[book.id]}">
-<img src="${esc(book.cover)}" alt="Portada de ${esc(book.title)}">
-    <span class="book-title">${esc(book.title)}</span>
-  </a>
-`).join('');
+  target.innerHTML = BOOKS.map(book => `
+    <a class="book-card" href="book.html?book=${encodeURIComponent(book.id)}">
+      <img src="${esc(book.cover)}" alt="Portada de ${esc(book.title)}">
+      <span class="book-title">${esc(book.title)}</span>
+    </a>
+  `).join('');
 
-const year = document.querySelector('#year');
-if (year) {
-year.textContent = new Date().getFullYear();
-}
+  const year = document.querySelector('#year');
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
 }
 
 /* BOOK PAGE */
 
 function renderBook() {
-const target = document.querySelector('#book-page');
-if (!target || !book) return;
+  const target = document.querySelector('#book-page');
+  if (!target || !book) return;
 
-document.title = `${book.title} · Carles Esteban`;
-document.body.style.setProperty(
-'--book-theme',
-book.theme || '#f4efe8'
-);
+  document.title = `${book.title} · Carles Esteban`;
 
-target.innerHTML = `
-<div class="book-shell">
-<a class="back-link" href="index.html">
-← Volver a los libros
-</a>
+  document.body.style.setProperty(
+    '--book-theme',
+    book.theme || '#f4efe8'
+  );
 
-  <section class="book-layout">
-    <div class="cover-wrap">
-      <img
-        class="detail-cover"
-        src="${esc(book.cover)}"
-        alt="Portada de ${esc(book.title)}"
-      >
-    </div>
-
-    <div class="book-options">
-      <p class="eyebrow">
-        ${esc(book.author || 'Carles Esteban')}
-      </p>
-
-      <h1>${esc(book.title)}</h1>
-
-      <p class="book-description">
-        ${esc(book.description || 'Descubre los textos disponibles de este libro.')}
-      </p>
-
-      <div class="reading-options">
-        <h2>Leer</h2>
-
-        ${(book.texts || []).map(text => `
-          <a
-            class="option"
-            href="${text.pdf
-              ? esc(text.pdf)
-              : `read.html?book=${encodeURIComponent(book.id)}&text=${encodeURIComponent(text.id)}`}"
-            ${text.pdf ? 'target="_blank" rel="noopener noreferrer"' : ''}
-          >
-            <span>${esc(text.title)}</span>
-            <span class="option-arrow" aria-hidden="true">→</span>
-          </a>
-        `).join('')}
-      </div>
-
-      <a
-        class="amazon-button"
-        href="${esc(book.amazon)}"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span>Comprar el libro</span>
-        <span aria-hidden="true">↗</span>
+  target.innerHTML = `
+    <div class="book-shell">
+      <a class="back-link" href="index.html">
+        ← Volver a los libros
       </a>
-    </div>
-  </section>
-</div>
 
-`;
+      <section class="book-layout">
+        <div class="cover-wrap">
+          <img
+            class="detail-cover"
+            src="${esc(book.cover)}"
+            alt="Portada de ${esc(book.title)}"
+          >
+        </div>
+
+        <div class="book-options">
+          <p class="eyebrow">
+            ${esc(book.author || 'Carles Esteban')}
+          </p>
+
+          <h1>${esc(book.title)}</h1>
+
+          <p class="book-description">
+            ${esc(book.description || 'Descubre los textos disponibles de este libro.')}
+          </p>
+
+          <div class="reading-options">
+            <h2>Leer</h2>
+
+            ${(book.texts || []).map(text => `
+              <a
+                class="option"
+                href="${text.pdf
+                  ? esc(text.pdf)
+                  : `read.html?book=${encodeURIComponent(book.id)}&text=${encodeURIComponent(text.id)}`}"
+                ${text.pdf ? 'target="_blank" rel="noopener noreferrer"' : ''}
+              >
+                <span>${esc(text.title)}</span>
+                <span class="option-arrow" aria-hidden="true">→</span>
+              </a>
+            `).join('')}
+          </div>
+
+          <a
+            class="amazon-button"
+            href="${esc(book.amazon)}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>Comprar el libro</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  `;
 }
 
 /* READING PAGE */
 
 function renderReading() {
-const target = document.querySelector('#reading-page');
-if (!target || !book) return;
+  const target = document.querySelector('#reading-page');
+  if (!target || !book) return;
 
-const text = (book.texts || []).find(
-item => item.id === textId
-) || (book.texts || [])[0];
+  const text = (book.texts || []).find(
+    item => item.id === textId
+  ) || (book.texts || [])[0];
 
-if (!text) return;
+  if (!text) return;
 
-if (text.pdf) {
-window.location.replace(text.pdf);
-return;
-}
+  if (text.pdf) {
+    window.location.replace(text.pdf);
+    return;
+  }
 
-document.title = `${text.title} · ${book.title}`;
-  
-target.innerHTML = `
-<article class="reading-shell">
-<nav class="reading-nav">
-<a href="book.html?book=${encodeURIComponent(book.id)}">
-← ${esc(book.title)}
-</a>
-</nav>
+  document.title = `${text.title} · ${book.title}`;
 
-  <header class="reading-header">
-    <p class="eyebrow">${esc(book.title)}</p>
-    <h1>${esc(text.title)}</h1>
-  </header>
+  target.innerHTML = `
+    <article class="reading-shell">
+      <nav class="reading-nav">
+        <a href="book.html?book=${encodeURIComponent(book.id)}">
+          ← ${esc(book.title)}
+        </a>
+      </nav>
 
-  <div class="reading-content">
-    ${text.content
-      ? esc(text.content).replace(/\n/g, '<br>')
-      : `<p class="empty-text">
-          Este texto estará disponible próximamente.
-        </p>`
-    }
-  </div>
-</article>
+      <header class="reading-header">
+        <p class="eyebrow">${esc(book.title)}</p>
+        <h1>${esc(text.title)}</h1>
+      </header>
 
-`;
+      <div class="reading-content">
+        ${text.content
+          ? esc(text.content).replace(/\n/g, '<br>')
+          : `<p class="empty-text">
+              Este texto estará disponible próximamente.
+            </p>`
+        }
+      </div>
+    </article>
+  `;
 }
 
 /* START */
@@ -170,17 +153,17 @@ renderReading();
 /* ERROR */
 
 if (
-(document.querySelector('#book-page')
-|| document.querySelector('#reading-page'))
-&& !book
+  (document.querySelector('#book-page')
+    || document.querySelector('#reading-page'))
+  && !book
 ) {
-const target = document.querySelector('#book-page')
-|| document.querySelector('#reading-page');
+  const target = document.querySelector('#book-page')
+    || document.querySelector('#reading-page');
 
-target.innerHTML = `
-  <div class="not-found">
-    <h1>Libro no encontrado</h1>
-    <a href="index.html">Volver a los libros</a>
-  </div>
-`;
+  target.innerHTML = `
+    <div class="not-found">
+      <h1>Libro no encontrado</h1>
+      <a href="index.html">Volver a los libros</a>
+    </div>
+  `;
 }
