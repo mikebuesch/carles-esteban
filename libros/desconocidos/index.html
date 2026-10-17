@@ -1,4 +1,20 @@
 <!doctype html>
+
 <html lang="es">
-<body></body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Desconocidos · Carles Esteban</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <main id="book-page"></main>
+  <script src="../../data.js"></script>
+  <script src="../../app.js"></script>
+  <script>
+    if (window.location.search === "") {
+      history.replaceState(null, "", "?book=book-1");
+    }
+  </script>
+</body>
 </html>
