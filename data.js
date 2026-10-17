@@ -1,28 +1,5 @@
 const BOOKS = [
   {
-    id: "book-1",
-    author: "Carles Esteban",
-    title: "Desconocidos",
-    cover: "/assets/covers/book-1.png",
-    theme: "#efe4e4",
-    description: "Un profesor de Historia de arte que finalmente se reconcilia con la pintura abstracta gracias a un pintor muy peculiar; dos personas que a través de la filosofía han descubierto una excepcional manera de amar; el vuelco inesperado que da el elaborado interrogatorio de un inspector; o dos escritores que han recibido el encargo de escribir, mano a mano, un thriller donde los personajes tienen un papel decisivo, son algunos de los relatos de Desconocidos, que en la misma línea que los dos trabajos anteriores del autor –La mujer de sus sueños y El espíritu de las ilusiones ocultas– nos sumergen desde la cotidianeidad en un mundo irreal, absurdo e insólito a través de historias que gravitan entre lo sorprendente, lo desconcertante y lo conmovedor.",
-    amazon: "https://www.amazon.es/Desconocidos-Carlos-Esteban/dp/B0H9HTM8BR/ref=mp_s_a_1_1?crid=3M5COF67LVJXR&dib=eyJ2IjoiMSJ9.fKmUagLvFzdD8M4pWX3XrFOh6DqyI4CVoh7v1vJaUB14ZoQ_2QuH25baMnIGLWThQ7dM8fvg2qw3dnRcA_kgbYx_IYHsVnOTEJaE_kIirH933itipwVnHr_Uz9U2D5ofUWRXNhsmE4vSaLryKuZk5N247QjnfBTyUhHHxLiYltzk-QONysu_gbaObSMHD5RYyw162k4vY84yc46e6leUww.sjVL8MSooXM6XNUHBslQ0WVz0xLhpEtF_o-JFivz2sc&dib_tag=se&keywords=carlos+esteban&qid=1790324829&sprefix=carlos+esteban%2Caps%2C79&sr=8-1",
-    texts: [
-      {
-        id: "text-1",
-        title: "Leer al azar",
-        content: "",
-        pdf: "/pdfs/Texto%201%20%28leer%20al%20azar%20para%20DESCONOCIDOS%29.pdf"
-      },
-      {
-        id: "text-2",
-        title: "Leer un capítulo",
-        content: "",
-        pdf: "/pdfs/Texto%202%20%28leer%20un%20cap%C3%ADtulo%29%20DESCONOCIDOS.pdf"
-      }
-    ]
-  },
-  {
     id: "book-2",
     author: "Carles Esteban",
     title: "La mujer de sus sueños",
@@ -67,5 +44,28 @@ const BOOKS = [
         pdf:"pdfs/Texto%202%20%28leer%20un%20cap%C3%ADulo%29%20EL%20ESP%C3%8DRITU%20DE%20LAS%20ILUSIONES%20OCULTAS.pdf"
       }
     ]
+    {
+    id: "book-1",
+    author: "Carles Esteban",
+    title: "Desconocidos",
+    cover: "/assets/covers/book-1.png",
+    theme: "#efe4e4",
+    description: "Un profesor de Historia de arte que finalmente se reconcilia con la pintura abstracta gracias a un pintor muy peculiar; dos personas que a través de la filosofía han descubierto una excepcional manera de amar; el vuelco inesperado que da el elaborado interrogatorio de un inspector; o dos escritores que han recibido el encargo de escribir, mano a mano, un thriller donde los personajes tienen un papel decisivo, son algunos de los relatos de Desconocidos, que en la misma línea que los dos trabajos anteriores del autor –La mujer de sus sueños y El espíritu de las ilusiones ocultas– nos sumergen desde la cotidianeidad en un mundo irreal, absurdo e insólito a través de historias que gravitan entre lo sorprendente, lo desconcertante y lo conmovedor.",
+    amazon: "https://www.amazon.es/Desconocidos-Carlos-Esteban/dp/B0H9HTM8BR/ref=mp_s_a_1_1?crid=3M5COF67LVJXR&dib=eyJ2IjoiMSJ9.fKmUagLvFzdD8M4pWX3XrFOh6DqyI4CVoh7v1vJaUB14ZoQ_2QuH25baMnIGLWThQ7dM8fvg2qw3dnRcA_kgbYx_IYHsVnOTEJaE_kIirH933itipwVnHr_Uz9U2D5ofUWRXNhsmE4vSaLryKuZk5N247QjnfBTyUhHHxLiYltzk-QONysu_gbaObSMHD5RYyw162k4vY84yc46e6leUww.sjVL8MSooXM6XNUHBslQ0WVz0xLhpEtF_o-JFivz2sc&dib_tag=se&keywords=carlos+esteban&qid=1790324829&sprefix=carlos+esteban%2Caps%2C79&sr=8-1",
+    texts: [
+      {
+        id: "text-1",
+        title: "Leer al azar",
+        content: "",
+        pdf: "/pdfs/Texto%201%20%28leer%20al%20azar%20para%20DESCONOCIDOS%29.pdf"
+      },
+      {
+        id: "text-2",
+        title: "Leer un capítulo",
+        content: "",
+        pdf: "/pdfs/Texto%202%20%28leer%20un%20cap%C3%ADtulo%29%20DESCONOCIDOS.pdf"
+      }
+    ]
+  },
   }
 ];
