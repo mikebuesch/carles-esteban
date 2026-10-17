@@ -47,7 +47,7 @@ function renderBook() {
 const target = document.querySelector('#book-page');
 if (!target || !book) return;
 
-document.title = "${book.title} · Carles Esteban";
+document.title = `${book.title} · Carles Esteban`;
 document.body.style.setProperty(
 '--book-theme',
 book.theme || '#f4efe8'
@@ -129,8 +129,8 @@ window.location.replace(text.pdf);
 return;
 }
 
-document.title = "${text.title} · ${book.title}";
-
+document.title = `${text.title} · ${book.title}`;
+  
 target.innerHTML = `
 <article class="reading-shell">
 <nav class="reading-nav">
