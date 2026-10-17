@@ -64,7 +64,7 @@ const BOOKS = [
         id: "text-2",
         title: "Leer un capítulo",
         content: "",
-        pdf: "/pdfs/Texto%202%20%28leer%20un%20cap%C3%ADtulo%29%20EL%20ESP%C3%8DRITU%20DE%20LAS%20ILUSIONES%20OCULTAS.pdf"
+        pdf:"pdfs/Texto%202%20%28leer%20un%20cap%C3%ADulo%29%20EL%20ESP%C3%8DRITU%20DE%20LAS%20ILUSIONES%20OCULTAS.pdf"
       }
     ]
   }
