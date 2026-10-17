@@ -5,9 +5,21 @@ const esc = (value) => String(value ?? "")
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#039;');
 
+
 const params = new URLSearchParams(window.location.search);
-const bookId = params.get('book');
 const textId = params.get('text');
+
+const path = window.location.pathname.toLowerCase();
+
+const bookIdFromPath = path.includes('/desconocidos/')
+  ? 'book-1'
+  : path.includes('/la-mujer-de-sus-suenos/')
+    ? 'book-2'
+    : path.includes('/el-espiritu-de-las-ilusiones-ocultas/')
+      ? 'book-3'
+      : null;
+
+const bookId = params.get('book') || bookIdFromPath;
 const book = BOOKS.find(item => item.id === bookId);
 
 /* HOMEPAGE */
